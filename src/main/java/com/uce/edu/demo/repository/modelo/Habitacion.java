@@ -1,4 +1,4 @@
-package com.example.demo.repository.modelo;
+package com.uce.edu.demo.repository.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

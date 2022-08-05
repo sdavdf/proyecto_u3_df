@@ -1,4 +1,4 @@
-package com.example.demo.repository.modelo;
+package com.uce.edu.demo.repository.modelo;
 
 import java.util.List;
 
@@ -34,7 +34,8 @@ public class Hotel {
 
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + "]";
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", habitaciones=" + habitaciones
+				+ "]";
 	}
 
 	// SET y GET

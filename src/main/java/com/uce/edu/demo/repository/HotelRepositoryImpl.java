@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.uce.edu.demo.repository;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.repository.modelo.Hotel;
+import com.uce.edu.demo.repository.modelo.Hotel;
 
 @Repository
 @Transactional

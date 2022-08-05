@@ -1,11 +1,11 @@
-package com.example.demo.repository;
+package com.uce.edu.demo.service;
 
 import java.util.List;
 
-import com.example.demo.repository.modelo.Hotel;
+import com.uce.edu.demo.repository.modelo.Hotel;
 
-public interface IHotelRepository {
-
+public interface IHotelService {
+	
 	public List<Hotel> buscarHotelInnerJoin(String tipoHabitacion);
 	
 	public List<Hotel> buscarHotelInnerJoin();
@@ -19,4 +19,5 @@ public interface IHotelRepository {
 	public List<Hotel> buscarHotelJoinWhere(String tipoHabitacion);
 	
 	public List<Hotel> buscarHotelJoinFetch(String tipoHabitacion);
+
 }

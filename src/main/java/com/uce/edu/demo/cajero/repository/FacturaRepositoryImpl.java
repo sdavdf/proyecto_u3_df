@@ -24,7 +24,14 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 		TypedQuery<Factura> myQuery = this.entityManager.createQuery(
 				"SELECT f FROM Factura f JOIN f.detalles d WHERE d.cantidad = :cantidadDetalle", Factura.class);
 		myQuery.setParameter("cantidadDetalle", cantidadDetalle);
-		return myQuery.getResultList();
+		
+		
+		List<Factura> facturas = myQuery.getResultList();
+		for(Factura f: facturas) {
+			f.getDetalles().size();
+		}
+		
+		return facturas;
 	}
 
 	@Override
@@ -57,6 +64,24 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 		// TODO Auto-generated method stub
 		TypedQuery<Factura> myQuery = this.entityManager.createQuery(
 				"SELECT f FROM Factura f RIGHT JOIN f.detalles d WHERE d.cantidad = :cantidadDetalle", Factura.class);
+		myQuery.setParameter("cantidadDetalle", cantidadDetalle);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Factura> buscarFacturaJoinWhere(Integer cantidadDetalle) {
+		// TODO Auto-generated method stub
+		TypedQuery<Factura> myQuery = this.entityManager.createQuery(
+				"SELECT f FROM Factura f, DetalleFactura d WHERE f = d.factura AND d.cantidad = :cantidadDetalle", Factura.class);
+		myQuery.setParameter("cantidadDetalle", cantidadDetalle);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Factura> buscarFacturaJoinFetch(Integer cantidadDetalle) {
+		// TODO Auto-generated method stub
+		TypedQuery<Factura> myQuery = this.entityManager.createQuery(
+				"SELECT f FROM Factura f JOIN FETCH f.detalles d WHERE d.cantidad = :cantidadDetalle", Factura.class);
 		myQuery.setParameter("cantidadDetalle", cantidadDetalle);
 		return myQuery.getResultList();
 	}

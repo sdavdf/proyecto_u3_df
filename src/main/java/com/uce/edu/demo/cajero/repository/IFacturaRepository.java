@@ -15,4 +15,8 @@ public interface IFacturaRepository {
 	public List<Factura> buscarFacturaOuterJoinLeft();
 
 	public List<Factura> buscarFacturaOuterJoinRight(Integer cantidadDetalle);
+	
+	public List<Factura> buscarFacturaJoinWhere(Integer cantidadDetalle);
+	
+	public List<Factura> buscarFacturaJoinFetch(Integer cantidadDetalle);
 }

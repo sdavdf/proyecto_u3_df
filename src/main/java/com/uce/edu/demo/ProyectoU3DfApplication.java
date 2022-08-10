@@ -1,6 +1,6 @@
 package com.uce.edu.demo;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,18 +8,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.cajero.repository.modelo.DetalleFactura;
-import com.uce.edu.demo.cajero.repository.modelo.Factura;
 import com.uce.edu.demo.cajero.service.IFacturaService;
-import com.uce.edu.demo.repository.modelo.Habitacion;
-import com.uce.edu.demo.repository.modelo.Hotel;
 import com.uce.edu.demo.service.IHotelService;
+import com.uce.edu.demo.service.ITransferenciaService;
 
 @SpringBootApplication
 public class ProyectoU3DfApplication implements CommandLineRunner {
 
 	private static Logger log = Logger.getLogger(ProyectoU3DfApplication.class);
 
+	@Autowired
+	private ITransferenciaService iTransferenciaService;
+	
 	@Autowired
 	private IHotelService hotelService;
 
@@ -36,32 +36,43 @@ public class ProyectoU3DfApplication implements CommandLineRunner {
 
 
 		
+		
+		
+		
+		this.iTransferenciaService.realizarTransferenciaFachada("345345", "1312312", new BigDecimal(8));
+		
+		
+		
+		
+		
+		
+		
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////
-		log.info("RELACIONAMIENTO JOIN");
-		List<Factura> listaFacturas = this.facturaService.buscarFacturaJoinWhere(10);
-		for (Factura f : listaFacturas) {
-			log.info("Factura: " + f.getNumero() + "   " + f.getFecha());
-		}
-		
+//		log.info("RELACIONAMIENTO JOIN");
+//		List<Factura> listaFacturas = this.facturaService.buscarFacturaJoinWhere(10);
+//		for (Factura f : listaFacturas) {
+//			log.info("Factura: " + f.getNumero() + "   " + f.getFecha());
+//		}
+//		
+//
+//		log.info("INNER JOIN EAGER/LAZY");
+//		List<Factura> listaFacturas2 = this.facturaService.buscarFacturaInnerJoin(10);
+//		for (Factura f : listaFacturas2) {
+//			log.info("Factura2: " + f.getNumero() + "   " + f.getFecha());
+//			for(DetalleFactura d : f.getDetalles()) {
+//				log.info("Factura2Detalles: " + d);
+//			}
+//		}
 
-		log.info("INNER JOIN EAGER/LAZY");
-		List<Factura> listaFacturas2 = this.facturaService.buscarFacturaInnerJoin(10);
-		for (Factura f : listaFacturas2) {
-			log.info("Factura2: " + f.getNumero() + "   " + f.getFecha());
-			for(DetalleFactura d : f.getDetalles()) {
-				log.info("Factura2Detalles: " + d);
-			}
-		}
-
 		
-		log.info("JOIN FETCH");
-		List<Factura> listaFacturas3 = this.facturaService.buscarFacturaJoinFetch(10);
-		for (Factura f : listaFacturas3) {
-			log.info("Factura3: " + f.getNumero() + "   " + f.getFecha());
-			for(DetalleFactura d : f.getDetalles()) {
-				log.info("Factura3Detalles: " + d);
-			}
-		}
+//		log.info("JOIN FETCH");
+//		List<Factura> listaFacturas3 = this.facturaService.buscarFacturaJoinFetch(10);
+//		for (Factura f : listaFacturas3) {
+//			log.info("Factura3: " + f.getNumero() + "   " + f.getFecha());
+//			for(DetalleFactura d : f.getDetalles()) {
+//				log.info("Factura3Detalles: " + d);
+//			}
+//		}
 
 		
 		

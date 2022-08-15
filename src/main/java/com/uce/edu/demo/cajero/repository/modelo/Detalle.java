@@ -13,32 +13,30 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "detalle")
-public class DetalleFactura {
-
+@Table(name="detalle")
+public class Detalle {
+	
 	@Id
-	@Column(name = "deta_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "deta_id_seq")
-	@SequenceGenerator(name = "deta_id_seq", sequenceName = "deta_id_seq", allocationSize = 1)
+	@Column(name="deta_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="deta_id_seq" )
+	@SequenceGenerator(name="deta_id_seq", sequenceName = "deta_id_seq", allocationSize =1 )
 	private Integer id;
-
-	@Column(name = "deta_cantidad")
+	
+	@Column(name="deta_nombre")
+	private String nombre;
+	
+	@Column(name="deta_cantidad")
 	private Integer cantidad;
-
-	@Column(name = "deta_subtotal")
-	private BigDecimal subtotal;
-
+	
+	@Column(name="deta_precio")
+	private BigDecimal precio;
+	
 	@ManyToOne
-	@JoinColumn(name = "deta_fact_id")
+	@JoinColumn(name="deta_fact_id" )
 	private Factura factura;
 	
-
-	@Override
-	public String toString() {
-		return "DetalleFactura [id=" + id + ", cantidad=" + cantidad + ", subtotal=" + subtotal  + "]";
-	}
-
-	// SET y GET
+	
+	//SET y GET
 	public Integer getId() {
 		return id;
 	}
@@ -55,12 +53,12 @@ public class DetalleFactura {
 		this.cantidad = cantidad;
 	}
 
-	public BigDecimal getSubtotal() {
-		return subtotal;
+	public BigDecimal getPrecio() {
+		return precio;
 	}
 
-	public void setSubtotal(BigDecimal subtotal) {
-		this.subtotal = subtotal;
+	public void setPrecio(BigDecimal precio) {
+		this.precio = precio;
 	}
 
 	public Factura getFactura() {
@@ -70,6 +68,16 @@ public class DetalleFactura {
 	public void setFactura(Factura factura) {
 		this.factura = factura;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
 
 
 	

@@ -29,10 +29,10 @@ public class Transferencia {
 	@Column(name = "tran_monto")
 	private BigDecimal monto;
 
-	@Column(name = "tran_cta_origen")
+	@Column(name = "tran_origen")
 	private Integer ctaOrigen;
 
-	@Column(name = "tran_cta_destino")
+	@Column(name = "tran_destino")
 	private Integer ctaDestino;
 
 	@ManyToOne

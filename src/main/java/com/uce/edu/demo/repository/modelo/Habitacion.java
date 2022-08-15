@@ -15,9 +15,9 @@ import javax.persistence.Table;
 public class Habitacion {
 
 	@Id
+	@Column(name = "habi_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "habi_id_seq")
 	@SequenceGenerator(name = "habi_id_seq", sequenceName = "habi_id_seq", allocationSize = 1)
-	@Column(name = "habi_id")
 	private Integer id;
 
 	@Column(name = "habi_numero")
@@ -29,16 +29,11 @@ public class Habitacion {
 	@Column(name = "habi_tipo")
 	private String tipo;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "habi_id_hotel")
 	private Hotel hotel;
 
-	@Override
-	public String toString() {
-		return "Habitacion [id=" + id + ", numero=" + numero + ", piso=" + piso + ", tipo=" + tipo + "]";
-	}
-
-	// SET y GET
+	// GET SET
 	public Integer getId() {
 		return id;
 	}
@@ -78,7 +73,5 @@ public class Habitacion {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
-	
-	
 
 }

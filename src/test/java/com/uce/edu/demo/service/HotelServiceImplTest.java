@@ -16,7 +16,7 @@ class HotelServiceImplTest {
 	@Autowired
 	private IHotelService hotelService;
 
-	// Dome
+
 	@Test
 	void testBuscarHotel() {
 		Hotel h2 = hotelService.buscarHotel("Suite");

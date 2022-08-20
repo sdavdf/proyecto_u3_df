@@ -41,7 +41,7 @@ public class FacturaServiceImpl implements IFacturaService {
 		this.facturaRepository.delete(id);
 	}
 
-	// ----------------PARA DOME ----------------------------------
+
 	@Override
 	public BigDecimal calcularPrecio(Integer id) {
 		Factura f = this.facturaRepository.consultar(id);
@@ -52,6 +52,8 @@ public class FacturaServiceImpl implements IFacturaService {
 			BigDecimal cantidad = new BigDecimal(p.getCantidad());
 			BigDecimal totalProducto = p.getPrecio().multiply(cantidad);
 			valorFactura = valorFactura.add(totalProducto);
+//			valorFactura = valorFactura.multiply(new BigDecimal(112));
+//			valorFactura = valorFactura.divide(new BigDecimal(100));
 		}
 
 		return valorFactura;

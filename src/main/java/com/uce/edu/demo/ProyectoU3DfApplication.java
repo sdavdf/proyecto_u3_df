@@ -1,5 +1,7 @@
 package com.uce.edu.demo;
 
+import java.math.BigDecimal;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,10 +35,22 @@ public class ProyectoU3DfApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-
-		log.info("Trabajo Grupal");
-		log.info("Programación Avanzada - Grupo 2");
 		
+		
+		this.iTransferenciaService.realizarTransferenciaFachada("345345", "1312312", new BigDecimal(1));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+//		log.info("Trabajo Grupal");
+//		log.info("Programación Avanzada - Grupo 2");
+//		
 		
 		
 //		ContadorHabitaciones c=this.hotelService.contarHabitaciones(1, "Individual");

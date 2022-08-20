@@ -23,10 +23,11 @@ public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
 	private EntityManager entityManager;
 
 	@Override
-	@Transactional(value = TxType.MANDATORY)
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public void actualizar(CuentaBancaria cuentaBancaria) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(cuentaBancaria);
+		throw new RuntimeException();
 	}
 
 	@Override

@@ -8,24 +8,36 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.cajero.repository.modelo.ContadorHabitaciones;
-import com.uce.edu.demo.cajero.service.IFacturaService;
-import com.uce.edu.demo.service.IHotelService;
-import com.uce.edu.demo.service.ITransferenciaService;
+import com.uce.edu.demo.manejoexp.repository.modelo.Cliente;
+import com.uce.edu.demo.manejoexp.repository.modelo.Producto;
+import com.uce.edu.demo.manejoexp.service.IClienteService;
+import com.uce.edu.demo.manejoexp.service.IFacturaService;
+import com.uce.edu.demo.manejoexp.service.IProductoService;
 
 @SpringBootApplication
 public class ProyectoU3DfApplication implements CommandLineRunner {
 
 	private static Logger log = Logger.getLogger(ProyectoU3DfApplication.class);
-
-	@Autowired
-	private ITransferenciaService iTransferenciaService;
+		
 	
 	@Autowired
-	private IHotelService hotelService;
+	private IClienteService iClienteService;
 
 	@Autowired
 	private IFacturaService facturaService;
+
+	@Autowired
+	private IProductoService productoService;
+	
+
+//	@Autowired
+//	private ITransferenciaService iTransferenciaService;
+//	
+//	@Autowired
+//	private IHotelService hotelService;
+//
+//	@Autowired
+//	private IFacturaService facturaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU3DfApplication.class, args);
@@ -37,7 +49,57 @@ public class ProyectoU3DfApplication implements CommandLineRunner {
 
 		
 		
-		this.iTransferenciaService.realizarTransferenciaFachada("345345", "1312312", new BigDecimal(1));
+		
+		Cliente c1 = new Cliente();
+		c1.setCedula("4234548");
+		c1.setNombre("Elisa");
+		c1.setApellido("Ramirez");
+		c1.setNumeroTarjeta("235465");
+
+		//this.iClienteService.insertar(c1);
+
+		Producto p1 = new Producto();
+		p1.setCodigoBarras("0001");
+		p1.setNombre("Pan");
+		p1.setPrecio(new BigDecimal(0.50));
+		p1.setStock(23);
+
+		Producto p2 = new Producto();
+		p2.setCodigoBarras("0002");
+		p2.setNombre("Harina");
+		p2.setPrecio(new BigDecimal(1.00));
+		p2.setStock(100);
+
+		//this.productoService.insertar(p1);
+		//this.productoService.insertar(p2);
+
+		this.facturaService.crearFactura("001-001-003", "4234548", "0001", "0001", "0001");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		this.iTransferenciaService.realizarTransferenciaFachada("345345", "1312312", new BigDecimal(1));
 		
 		
 		

@@ -21,7 +21,7 @@ public class TransferenciaRepositoryImpl implements ITransferenciaRepository{
 	private EntityManager entityManager;
 	
 	@Override
-	@Transactional(value = TxType.REQUIRES_NEW)
+	@Transactional(value = TxType.REQUIRED)
 	public void insertar(Transferencia transferencia) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(transferencia);

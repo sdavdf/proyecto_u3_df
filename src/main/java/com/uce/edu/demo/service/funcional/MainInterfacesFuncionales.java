@@ -1,5 +1,12 @@
 package com.uce.edu.demo.service.funcional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
 import org.apache.log4j.Logger;
 
 import com.uce.edu.demo.ProyectoU3DfApplication;
@@ -7,6 +14,10 @@ import com.uce.edu.demo.ProyectoU3DfApplication;
 public class MainInterfacesFuncionales {
 
 	private static Logger log = Logger.getLogger(ProyectoU3DfApplication.class);
+
+	public static void imprimir(String cadena) {
+		log.info("Impresión: " + cadena);
+	}
 	
 	
 	public static void main(String[] args) {
@@ -38,6 +49,11 @@ public class MainInterfacesFuncionales {
 		);
 		log.info("HO Supplier: "+valorHO1);
 	
+	// JAVA
+	log.info("JAVA Supplier");	
+	Stream<String> test = Stream.generate(() -> "Edison 3").limit(2);
+	test.forEach(cadena -> System.out.println(cadena));
+		
 	
 	//CONSUMER
 	//Clases
@@ -53,6 +69,11 @@ public class MainInterfacesFuncionales {
 	
 	metodosHO.consumirConsumer(valor -> System.out.println(valor), 2);
 	
+	// JAVA
+	log.info("JAVA Consumer");
+	List<Integer> listaNumeros = Arrays.asList(1,2,3,4,5);
+	listaNumeros.forEach(numero -> System.out.println(numero));
+	
 	//PREDICATE
 	//Clases
 	
@@ -64,6 +85,11 @@ public class MainInterfacesFuncionales {
 	// Metodos High Order
 	boolean respuesta = metodosHO.consumirPredicate(cadena -> cadena.contains("Z"), "Zoila");
 	log.info("HO Predicate" + respuesta);
+	
+	//JAVA
+	log.info("JAVA Predicate");
+	Stream<Integer> nuevaLista = listaNumeros.stream().filter(numero -> numero >= 3);
+	nuevaLista.forEach(numero -> System.out.println(numero));
 	
 	//FUNCTION
 	//Clases
@@ -82,6 +108,19 @@ public class MainInterfacesFuncionales {
 		return retorn;
 	}, 1);
 	log.info("HO Function: "+valorFinalHO);
+	
+	//JAVA
+	log.info("JAVA Function");
+	//Conversiones/cast Empleado -> EmpleadoDTO (Ligero)
+	Stream<String> listaCambiada = listaNumeros.stream().map(numeroLista -> {
+		Integer valor = numeroLista + 1;
+		String cadena = "num: "+valor.toString();
+		return cadena;
+	});
+	listaCambiada.forEach(valor -> imprimir(valor));
+	
+//	List<String> lista1 = new ArrayList<>();
+//	Map<String,String> mpa1 = new HashMap<String, String>();
 	
 	//UNARY OPERATOR(FUNCTION)
 	//Clases

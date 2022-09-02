@@ -1,5 +1,7 @@
 package com.uce.edu.demo.colegio.service.funcional;
 
+import java.util.stream.Stream;
+
 import org.apache.log4j.Logger;
 
 import com.uce.edu.demo.ProyectoU3DfApplication;
@@ -7,10 +9,10 @@ import com.uce.edu.demo.ProyectoU3DfApplication;
 public class MainInterfacesFuncionales {
 
 	private static Logger log = Logger.getLogger(ProyectoU3DfApplication.class);
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		MetodosHighOrder metodosHO = new MetodosHighOrder();
 
 		// SUPPLIER
@@ -54,7 +56,7 @@ public class MainInterfacesFuncionales {
 		IAlumnoPredicate<String> predicateClase = new AlumnoPredicateImpl();
 		boolean valorImprimir = predicateClase.evaluar("Stalyn");
 		log.info("predicate Clase Tarea: " + valorImprimir);
-		
+
 		// Lambdas
 
 		IAlumnoPredicate<String> predicateLamba = cadena -> cadena.contains("A");
@@ -63,10 +65,10 @@ public class MainInterfacesFuncionales {
 		// Metodos High Order
 		boolean respuesta = metodosHO.consumirPredicate(cadena -> cadena.contains("X"), "Madelein");
 		log.info("High Order predicate " + respuesta);
-		
+
 		// FUNCTION
 		// Clases
-		
+
 		IAlumnoFunction<String, Integer> functionPredicate = new AlumnoFunctionImpl<>();
 		String funcionImprimir = functionPredicate.aplicar(4);
 		log.info("Function clase: el numero es: " + funcionImprimir);
@@ -89,7 +91,7 @@ public class MainInterfacesFuncionales {
 		log.info("Function Lamba: " + functionLambda.aplicar("9"));
 
 		// Metodos High Order
-		
+
 		String valorFinalHO = metodosHO.consumirFunction(valor -> {
 			String retorno = valor.toString() + "Ingresando datos en Function";
 			return retorno;
@@ -97,9 +99,9 @@ public class MainInterfacesFuncionales {
 		log.info("High Order Function " + valorFinalHO);
 
 		// UNARY OPERATOR
-		
+
 		// Clases
-		
+
 		IAlumnoFunctionUnaryOperator<String> functionUnaryOperator = new AlumnoFunctionUnaryOperatorImpl();
 		String ValorPrueba = functionUnaryOperator.aplicar("Probando Unary Operator");
 		log.info(ValorPrueba);
